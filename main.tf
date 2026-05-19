@@ -21,6 +21,7 @@ module "eduInsightEc2"{
     source = "./modules/ec2"
     ami_id = "ami-0a84a03957476a2cc"
     instance_type = "t2.micro"
+    vpc_id = module.eduInsightVpc.vpc_id
     subnet_id = module.eduInsightVpc.private_subnet[0]
     security_group = module.eduInsightSecurityGroup.alb_sg_id
 }

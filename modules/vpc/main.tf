@@ -48,6 +48,11 @@ resource "aws_route_table" "public_rt" {
 
 resource "aws_route_table" "private_rt" {
     vpc_id = aws_vpc.eduInsightVpc.id
+    route{
+        nat_gateway_id = aws_nat_gateway.custom_nat_gateway.id
+        cidr_block = "0.0.0.0/0"
+
+    }
     tags = {
         Name = "eduInsightPrivateRouteTable"
     }
@@ -59,6 +64,7 @@ resource "aws_route_table_association" "private_assoc" {
     count = 2
     subnet_id = aws_subnet.private_subnet[count.index].id
     route_table_id = aws_route_table.private_rt.id 
+
 }
 
 resource "aws_route_table_association" "public_assoc" {
@@ -66,6 +72,20 @@ resource "aws_route_table_association" "public_assoc" {
     subnet_id = aws_subnet.eduInsightPublicSubnet[count.index].id
     route_table_id = aws_route_table.public_rt.id  
 }
+
+resource "aws_eip" "elastic_ip" {
+    domain = "vpc"
+}
+
+resource "aws_nat_gateway" "custom_nat_gateway" {
+    allocation_id = aws_eip.elastic_ip.id
+    subnet_id = aws_subnet.eduInsightPublicSubnet[0].id
+  
+}
+
+
+
+
 
 
 

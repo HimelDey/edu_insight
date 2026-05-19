@@ -13,3 +13,7 @@ variable "subnet_id" {
 variable "security_group" {
   description = "Security group"
 }
+
+variable "vpc_id" {
+  description = "VPC ID"
+}
