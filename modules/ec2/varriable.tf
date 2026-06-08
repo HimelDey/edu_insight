@@ -17,3 +17,8 @@ variable "security_group" {
 variable "vpc_id" {
   description = "VPC ID"
 }
+
+variable "iam_instance_profile" {
+  description = "IAM instance profile"
+  
+}

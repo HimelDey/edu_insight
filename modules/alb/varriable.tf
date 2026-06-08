@@ -13,3 +13,7 @@ variable "security_group" {
 variable "public_subnet" {
     description = "public subnet id"
 }
+
+variable "certificate_arn" {
+    description = "ACM certificate ARN"
+}
