@@ -6,6 +6,8 @@ Infrastructure-as-Code for the EduInsight environment using Terraform and AWS.
 
 This repository contains Terraform modules and top-level configuration to provision a small VPC, security groups, EC2 instance, and an Application Load Balancer (ALB) in AWS. The setup is split into reusable modules under `modules/` and orchestrated from the root `main.tf`.
 
+![alt text](systemarchitecture.png)
+
 ## Repo Structure
 
 - [main.tf](main.tf#L1-L52): Root Terraform configuration that wires modules and resources.
